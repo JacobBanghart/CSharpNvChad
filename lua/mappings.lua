@@ -38,9 +38,15 @@ map("n", "<A-Down>", ":m .+1<CR>==", { desc = "Move line down" })
 map("v", "<A-Up>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 map("v", "<A-Down>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 
+-- Duplicate lines
+map("n", "<A-Shift-Down>", "yyp", { desc = "Duplicate line", noremap = true, silent = true })
+map("v", "<A-Shift-Down>", "yyp", { desc = "Duplicate selection", noremap = true, silent = true })
 -- Window management
 map("n", "<leader>v", function()
   require("nvchad.term").new { pos = "vsp" }
   vim.cmd "vertical resize 100"
   vim.cmd "startinsert"
 end, { noremap = false, silent = true, desc = "Vertical split with terminal" })
+
+-- Copilot
+map("i", "<C-y>", "<Plug>(copilot-accept-word)", { desc = "Accept Copilot suggestion", noremap = true, silent = true })
